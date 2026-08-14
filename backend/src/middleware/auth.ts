@@ -13,7 +13,7 @@ export function requireAuth(req: AuthenticatedRequest, res: Response, next: Next
   console.log("Token : ", token);
 
   console.log("Cookies : ", req.cookies);
-  
+  console.log("req header :", req);
   
 
   if (!token) {
