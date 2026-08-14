@@ -7,7 +7,14 @@ export interface AuthenticatedRequest extends Request {
 }
 export function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
   const cookieName = process.env.COOKIE_NAME || "opt_token";
+
+  
   const token = req.cookies?.[cookieName];
+  console.log("Token : ", token);
+
+  console.log("Cookies : ", req.cookies);
+  
+  
 
   if (!token) {
     return next(new UnauthenticatedError());
