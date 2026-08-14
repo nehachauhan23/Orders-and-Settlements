@@ -23,6 +23,10 @@ function cookieName() {
 export async function signup(req: AuthenticatedRequest, res: Response) {
   const input = signupSchema.parse(req.body);
   const { token, user } = await authService.signup(input);
+  console.log("req ", req);
+  
+  console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("COOKIE OPTIONS:", cookieOptions());
   res.cookie(cookieName(), token, cookieOptions());
   res.status(201).json({ user });
 }
