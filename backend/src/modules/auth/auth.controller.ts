@@ -13,6 +13,7 @@ function cookieOptions() {
     sameSite: (isProd ? "none" : "lax") as "none" | "lax",
     maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     path: "/",
+    // domain:'https://orders-and-settlements-3.onrender.com'
   };
 }
 

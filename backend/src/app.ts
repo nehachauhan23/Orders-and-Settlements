@@ -16,6 +16,7 @@ export function createApp() {
   app.use(
     cors({
       origin: process.env.FRONTEND_ORIGIN || "http://localhost:3000",
+      allowedHeaders: ['Content-Type', 'Authorization'],
       credentials: true,
     })
   );
