@@ -59,15 +59,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     [router]
   );
 
-  const logout = useCallback(async () => {
-    await authApi.logout().catch(() => {
-      // Even if the network call fails, clear local state so the UI
-      // doesn't strand the person in a logged-in-looking screen.
-    });
+ const logout = useCallback(async () => {
+  try {
+    await authApi.logout();
+  } finally {
     setUser(null);
     setStatus("unauthenticated");
-    router.push("/login");
-  }, [router]);
+    router.replace("/login");
+  }
+}, [router]);
+
 
   return (
     <AuthContext.Provider value={{ user, status, login, signup, logout }}>

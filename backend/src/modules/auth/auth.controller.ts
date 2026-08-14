@@ -33,17 +33,18 @@ export async function login(req: AuthenticatedRequest, res: Response) {
   const input = loginSchema.parse(req.body);
   const { token, user } = await authService.login(input);
 
-   console.log("req from login ", req);
-  
-  console.log("NODE_ENV:", process.env.NODE_ENV);
-console.log("COOKIE OPTIONS:", cookieOptions());
+
   res.cookie(cookieName(), token, cookieOptions());
   res.status(200).json({ user });
 }
-
 export async function logout(req: AuthenticatedRequest, res: Response) {
-  res.clearCookie(cookieName(), { ...cookieOptions(), maxAge: undefined });
-  res.status(204).send();
+  res.clearCookie(cookieName(), {
+    ...cookieOptions(),
+    maxAge: undefined,
+  });
+   
+
+  return res.status(204).send();
 }
 
 export async function me(req: AuthenticatedRequest, res: Response) {

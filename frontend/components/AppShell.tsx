@@ -16,7 +16,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5">
           <div className="flex items-center gap-8">
             <Link href="/dashboard" className="flex items-center gap-2">
-              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-ink-900 text-xs font-semibold text-white">
+              <span className="flex h-7 w-7 items-center justify-center rounded-md bg-green-600 text-xs font-semibold text-white">
                 OT
               </span>
               <span className="text-sm font-semibold text-ink-900">Order Tracker</span>
