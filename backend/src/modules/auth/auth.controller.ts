@@ -23,10 +23,7 @@ function cookieName() {
 export async function signup(req: AuthenticatedRequest, res: Response) {
   const input = signupSchema.parse(req.body);
   const { token, user } = await authService.signup(input);
-  console.log("req ", req);
   
-  console.log("NODE_ENV:", process.env.NODE_ENV);
-console.log("COOKIE OPTIONS:", cookieOptions());
   res.cookie(cookieName(), token, cookieOptions());
   res.status(201).json({ user });
 }
@@ -34,6 +31,11 @@ console.log("COOKIE OPTIONS:", cookieOptions());
 export async function login(req: AuthenticatedRequest, res: Response) {
   const input = loginSchema.parse(req.body);
   const { token, user } = await authService.login(input);
+
+   console.log("req from login ", req);
+  
+  console.log("NODE_ENV:", process.env.NODE_ENV);
+console.log("COOKIE OPTIONS:", cookieOptions());
   res.cookie(cookieName(), token, cookieOptions());
   res.status(200).json({ user });
 }
@@ -44,6 +46,7 @@ export async function logout(req: AuthenticatedRequest, res: Response) {
 }
 
 export async function me(req: AuthenticatedRequest, res: Response) {
+   console.log("req from /me ", req);
   const user = await authService.getUserById(req.userId!);
   res.status(200).json({ user });
 }
