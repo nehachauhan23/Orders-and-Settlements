@@ -8,9 +8,15 @@ SETUP & RUN -
 npm i 
 add mongodb url in .env 
 add mongodb test url in .env.test
+
+npm run seed 
+
+
+after seed demo user 
+
 username - demo@ordertracker.test
 password - password123
-npm run seed 
+
 
 API overview — auth, orders, payments, dashboard endpoints in tables, plus the consistent error shape and status code meanings.
 
