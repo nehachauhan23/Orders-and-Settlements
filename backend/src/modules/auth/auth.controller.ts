@@ -5,6 +5,8 @@ import { AuthenticatedRequest } from "../../middleware/auth";
 
 function cookieOptions() {
   const isProd = process.env.NODE_ENV === "production";
+  console.log("isProd: ", isProd);
+  
   return {
     httpOnly: true,
     secure: isProd, // only sent over HTTPS in production
